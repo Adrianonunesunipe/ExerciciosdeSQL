@@ -1,0 +1,289 @@
+ 
+Lista de Exercícios de SQL
+
+
+ ************************ Exercicio 1 **************************
+
+ Insert Into estado (id,uf,nome) values(1, 'AC','Acre')
+ Insert Into estado (id,uf,nome) Values(2,'AL','Alagoas');  
+ Insert Into estado (id,uf,nome) Values(3,'AM','Amazonas');
+ Insert Into estado (id,uf,nome) Values(4,'AP','Amapá');
+ Insert Into estado (id,uf,nome) Values(5,'BA','Bahia');
+ Insert Into estado (id,uf,nome) Values(6,'CE','Ceará');
+ Insert Into estado (id,uf,nome) Values(7,'DF','Distrito Federal');
+ Insert Into estado (id,uf,nome) Values(8,'ES','Espírito Santo');
+ Insert Into estado (id,uf,nome) Values(9,'GO','Goiás');
+ Insert Into estado (id,uf,nome) Values(10,'MA','Maranhão');
+ Insert Into estado (id,uf,nome) Values(11,'MG','Minas Gerais');
+ Insert Into estado (id,uf,nome) Values(12,'MS','Mato Grosso do Sul');
+ Insert Into estado (id,uf,nome) Values(13,'MT','Mato Grosso');
+ Insert Into estado (id,uf,nome) Values(14,'PA','Pará');
+ Insert Into estado (id,uf,nome) Values(15,'PB','Paraíba');
+ Insert Into estado (id,uf,nome) Values(16,'PE','Pernambuco');
+ Insert Into estado (id,uf,nome) Values(17,'PI','Piauí');
+ Insert Into estado (id,uf,nome) Values(18,'PR','Paraná');
+ Insert Into estado (id,uf,nome) Values(19,'RJ','Rio de Janeiro');
+ Insert Into estado (id,uf,nome) Values(20,'RN','Rio Grande do Norte');
+ Insert Into estado (id,uf,nome) Values(21,'RO','Rondônia');
+ Insert Into estado (id,uf,nome) Values(22,'RR','Roraima');
+ Insert Into estado (id,uf,nome) Values(23,'RS','Rio Grande do Sul');
+ Insert Into estado (id,uf,nome) Values(24,'SC','Santa Catarina');
+ Insert Into estado (id,uf,nome) Values(25,'SE','Sergipe');
+ Insert Into estado (id,uf,nome) Values(26,'SP','São Paulo');
+ Insert Into estado (id,uf,nome) Values(27,'TO','Tocantins');
+
+ ************************ Exercicio 2 **************************
+ 
+ Insert Into cidade (id,estado_id,nome) values(1, 'SC','Chapecó');
+ Insert Into cidade (id,estado_id,nome) values(1, 'SC','Blumenau');
+ Insert Into cidade (id,estado_id,nome) values(3, 'SC','Joinville');
+ 
+ Insert Into cidade (id,estado_id,nome) values(4, 'PR','Curitiba');
+ Insert Into cidade (id,estado_id,nome) values(5, 'PR','Maringá');
+ Insert Into cidade (id,estado_id,nome) values(6, 'PR','Lunardeli');
+ Insert Into cidade (id,estado_id,nome) values(7, 'PR','Apucarana');
+ Insert Into cidade (id,estado_id,nome) values(8, 'PR','Santa fé');
+ Insert Into cidade (id,estado_id,nome) values(9, 'PR','São Miguel do Iguaçu');
+ Insert Into cidade (id,estado_id,nome) values(10, 'PR','Arapongas');
+ Insert Into cidade (id,estado_id,nome) values(11, 'PR','Ponta Grossa');
+ Insert Into cidade (id,estado_id,nome) values(12, 'PR','Jandaia do Sul');
+
+ Insert Into cidade (id,estado_id,nome) values(13, 'SP','Ribeirão Preto');
+
+ ************************ Exercicio 3 **************************
+
+ DELETE FROM estado where id = 1
+ DELETE FROM estado where id = 2
+ DELETE FROM estado where id = 3
+ DELETE FROM estado where id = 4
+ DELETE FROM estado where id = 5
+ DELETE FROM estado where id = 6
+ DELETE FROM estado where id = 7
+ DELETE FROM estado where id = 8
+ DELETE FROM estado where id = 9
+ DELETE FROM estado where id = 10
+ DELETE FROM estado where id = 11
+ DELETE FROM estado where id = 12
+ DELETE FROM estado where id = 13
+ DELETE FROM estado where id = 14
+ DELETE FROM estado where id = 15
+ DELETE FROM estado where id = 16
+ DELETE FROM estado where id = 17
+ DELETE FROM estado where id = 19
+ DELETE FROM estado where id = 20
+ DELETE FROM estado where id = 21
+ DELETE FROM estado where id = 22
+ DELETE FROM estado where id = 23
+ DELETE FROM estado where id = 25
+ DELETE FROM estado where id = 27
+
+ ************************ Exercicio 4 **************************
+
+ Insert Into cidade (id,estado_id,nome) values(14, 'SP','Campinas');
+ Insert Into cidade (id,estado_id,nome) values(15, 'SP','Indaiatuba');
+ Insert Into cidade (id,estado_id,nome) values(16, 'SP','São Carlos');
+ Insert Into cidade (id,estado_id,nome) values(17, 'SP','Americana');
+ Insert Into cidade (id,estado_id,nome) values(18, 'SP','Paulinia');
+ Insert Into cidade (id,estado_id,nome) values(19, 'SP','Sorocaba');
+ Insert Into cidade (id,estado_id,nome) values(20, 'SP','Barretos');
+
+ 
+ ************************ Exercicio 5 **************************
+
+ update cidade set nome = 'Lunardelli' where id = 6;
+ update cidade set nome = 'Jandaia' where id = 12;
+ update cidade set nome = 'Cidade Canção' where id = 5;
+
+
+ ************************ Exercicio 6 **************************
+ 
+ Select cid.nome, est.uf
+ From cidade cid, estado est
+ Where cid.estado_id = est.id ORDER BY est.uf;
+ 
+ Select cid.nome, est.uf
+ From cidade cid, estado est
+ Where cid.estado_id = est.id ORDER BY cid.nome;
+ 
+
+ ************************ Exercicio 7 **************************
+ 
+ select count(*),cidade.estado_id,estado.uf
+ from cidade,estado
+ where estado_id = estado.id
+ group by cidade.estado_id,estado.uf;
+
+ 
+ ************************ Exercicio 8 **************************
+
+ alter table endereco
+ ADD COLUMN tipo_endereco varchar not null default 'residencial';
+
+
+ ************************ Exercicio 9 **************************
+ 
+ insert into pessoa (nome, cpf) values ('Adriano','09357389750')
+ insert into pessoa (nome, cpf) values ('Rosa','12345678912')
+ insert into pessoa (nome, cpf) values ('Paulo','98765432112')
+
+ insert into endereco (id,cidade_id, uf, logadouro, numero, complemento, cep,   tipo_endereco) 
+ values (1,4,'PR', 'Rua São José', '55','casa', '28000001', 'Residencial')
+
+ insert into endereco (cidade_id, uf, logradouro, numero, complemento, cep,   tipo_endereco) 
+ values (2,4,'PR', 'Rua Santa Maria', '45','Loja', '29000021', 'Comercial')
+
+ insert into endereco (cidade_id, uf, logradouro, numero, complemento,cep,   tipo_endereco) 
+ values (3,5,'PR', 'Rua São Miguel', '65','Casa', '30000321', 'Residencial')
+
+ insert into endereco (cidade_id, uf, logradouro, numero, complemento, cep,   tipo_endereco) 
+ values (4,5,'PR', 'Rua São Pedro', '75','Loja','31004321', 'Comercial')
+
+ insert into endereco (cidade_id, uf, logradouro, numero, complemento, cep,   tipo_endereco) 
+ values (5,6,'PR', 'Rua São Luis', '85', 'Casa', '32054321', 'Residencial')
+
+ into endereco (cidade_id, uf, logradouro, numero, complemento, cep,  tipo_endereco) 
+ values (6,6,'PR', 'São João', '95','Loja', '33654321', 'Comercial')
+
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (1,1, 1)
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (2,1, 2)
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (3,2, 3)
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (4,2, 4)
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (5,3, 5)
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (6,3, 6)
+
+
+ ************************ Exercicio 10 **************************
+
+ insert into endereco (id,cidade_id, uf, logradouro, numero,Complemento, cep, tipo_endereco) 
+ values (7,14, 'SP', 'Rua Sampaio Vidal', '601','Casa', '35000170', 'Residencial');
+
+ insert into endereco (id,cidade_id, uf, logradouro, numero, complemento, cep, tipo_endereco) 
+ values (8,14, 'SP', 'Rua Jd do Lago', '645', 'Loja', '35001132', 'Comercial');
+
+ insert into endereco (id,cidade_id, uf, logradouro, numero, Complemento, cep, tipo_endereco) 
+ values (9,15, 'SP', 'Rua Joana Batista', '555','Casa', '58000130', 'Residencial');
+
+ insert into endereco (id,cidade_id, uf, logradouro, numero, cep, Complemento, tipo_endereco) 
+ values (10,15, 'SP', 'Rua Maciel Pinheiro', '200','Loja', '58001340', 'Comercial');
+
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (7,4, 7);
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (8,4, 8);
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (9,5, 9);
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (10,5, 10);
+
+
+ ************************ Exercicio 11 **************************
+
+ insert into pessoa (id,nome, cpf) values ('6','Anderson', '86578532412');
+ insert into pessoa (id,nome, cpf) values ('7','Flavio', '92136784556');
+
+ insert into endereco (id,cidade_id, uf, logradouro, numero, cep, Complemento, tipo_endereco) 
+ values (11,3, 'SC', 'Rua Paraguay', '800', '13000-064','Loja', 'COMERCIAL');
+
+ insert into endereco (id,cidade_id, uf, logradouro, numero, cep, Complemento, tipo_endereco) 
+ values (12,4, 'SC', 'Rua Uruguay', '900', '35000-050', 'Loja', 'COMERCIAL');
+
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (11,6, 11);
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (12,7, 12);
+
+
+************************ Exercicio 12 **************************
+
+ select pes.nome as Nome,end.uf as Estado, 
+ (select nome from cidade where id = end.cidade_id) as Cidade
+ from pessoa_endereco pes_end, pessoa pes, endereco end
+ where pes.id = pes_end.pessoa_id  
+ and end.id = pes_end.endereco_id
+
+
+************************ Exercicio 13 **************************
+
+ insert into pessoa (id,nome, cpf) values ('8','Marcos', '54389712378');
+
+ insert into endereco (id,cidade_id, uf, logradouro, numero, cep, Complemento, tipo_endereco) 
+ values (13,13, 'SP', 'Rua da Republica', '1150', '70834064','Loja', 'COMERCIAL');
+
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (13,8, 13);
+
+
+ delete pes.nome as Nome,end.uf as Estado, (select nome from cidade where id = end.cidade_id) as Cidade
+ from pessoa_endereco pes_end, pessoa pes, endereco end
+ where pes.id = pes_end.pessoa_id  
+ and end.id = pes_end.endereco_id 
+ and end.cidade_id = 13
+
+
+************************ Exercicio 14 **************************
+
+ update endereco
+ set cep = '00000000'
+ where tipo_endereco = 'RESIDENCIAL'
+
+
+************************ Exercicio 15 **************************
+
+ insert into pessoa (id,nome, cpf) values ('9','DB1', '12345678000120')
+ insert into pessoa (id,nome, cpf) values ('10','Petrobras', '87654321000130')
+ insert into pessoa (id,nome, cpf) values ('11','Globo', '91827364000140')
+
+ insert into endereco (id,cidade_id, uf, logradouro, numero, Complemento, cep, tipo_endereco) 
+ values (14,4,'PR','Rua das Oliveiras', '322','Loja', '98567030', 'COMERCIAL')
+
+ insert into endereco (id,cidade_id, uf, logradouro, numero,Complemento, cep, tipo_endereco) 
+ values (15,4,'PR','Rua da Felicidade', '8190','Loja', '98456078', 'COMERCIAL')
+
+ insert into endereco (id,cidade_id, uf, logradouro, numero,Complemento, cep, tipo_endereco) 
+ values (16,20,'SP', 'Rua da Providência', '8667','Loja', '150130789', 'COMERCIAL'
+
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (14,9,14); 
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (15,10,15);
+ insert into pessoa_endereco (id,pessoa_id, endereco_id) values (16,11,16);
+
+ insert into recibo (id,cidade_id, pessoa_id, emissor_id, descricao, data_recibo, valor) 
+ values (1,4, 1, 11, 'Software para Controle de Estoque', '21/07/2019', '30000');
+
+ insert into recibo (id,cidade_id, pessoa_id, emissor_id, descricao, data_recibo, valor) 
+ values (2,4, 2, 11, 'Software para Logistica', '22/07/2019', '40000');
+
+
+************************ Exercicio 16 **************************
+
+ insert into recibo (id,cidade_id, pessoa_id, emissor_id, descricao, data_recibo, valor) 
+ values (3,4, 1, 9, 'Recibo de Pagamento de Materiais', '10/04/2019', '500');
+
+ insert into recibo (id,cidade_id, pessoa_id, emissor_id, descricao, data_recibo, valor) 
+ values (4,5, 3, 10, 'Recibo de Pagamento de Mensalidade', '20/05/2019', '700');
+
+
+
+
+************************ Exercicio 17 **************************
+
+ 
+ select rec.id as numero_recibo
+ rec.data_recibo,
+ rec.valor,
+ rec.emissor_id as Emitente,
+ cli.nome as nome_cliente,
+ uf_cli.nome as cliente_estado
+ from recibo rec, pessoa cli, pessoa_endereco pend_cli, endereco end_cli, cidade cid_cli, estado  uf_cli, 
+ pessoa emi, pessoa_endereco pend_emi, endereco end_emi, cidade cid_emi, estado uf_emi
+ where cli.id = rec.pessoa_id 
+ and pend_cli.pessoa_id = cli.id
+ and pend_cli.endereco_id = pend_cli.id
+ and cid_cli.id = end_cli.cidade_id 
+ and uf_cli.id = cid_cli.estado_id
+ and end_cli.tipo_endereco = 'Residencial'
+ and rec.emissor_id = emi.id
+ and pend_emi.pessoa_id = emi.id
+ and pend_emi.endereco_id = pend_emi.id
+ and cid_emi.id = end_emi.cidade_id 
+ and uf_emi.id = cid_emi.estado_id
+ and end_emi.tipo_endereco = 'Comercial'
+
+ 
+************************ Exercicio 18 **************************
+
+
+
+
